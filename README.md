@@ -19,7 +19,7 @@ O sistema ficara acessível via http://localhost/ pode ser visto as rotas criada
 ## Requisitos para banco de dados
 
 - Iniciar o docker
-- Acessar pelo SGBD preferido
+- Acessar pelo SGBD preferido * eu uso o HeidiSQL
 - Colocar host = 127.0.0.1
 - Usuário = root
 - Senha = brasil
