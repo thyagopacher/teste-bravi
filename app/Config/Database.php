@@ -32,10 +32,10 @@ class Database extends Config
      */
     public $default = [
         'DSN'      => '',
-        'hostname' => 'localhost',
-        'username' => '',
-        'password' => '',
-        'database' => '',
+        'hostname' => 'db',
+        'username' => 'root',
+        'password' => 'brasil',
+        'database' => 'contato',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
@@ -79,7 +79,15 @@ class Database extends Config
     public function __construct()
     {
         parent::__construct();
-
+        if (getenv('DATABASE_HOSTNAME')) {
+            $this->default['hostname'] = getenv('DATABASE_HOSTNAME');
+        }
+        if (getenv('DATABASE_USERNAME')) {
+            $this->default['username'] = getenv('DATABASE_USERNAME');
+        }
+        if (getenv('DATABASE_PASSWORD')) {
+            $this->default['password'] = getenv('DATABASE_PASSWORD');
+        }
         // Ensure that we always set the database group to 'tests' if
         // we are currently running an automated test suite, so that
         // we don't overwrite live data on accident.

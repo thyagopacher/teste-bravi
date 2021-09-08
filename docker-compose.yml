@@ -1,0 +1,22 @@
+version: "3"
+services:
+  web:
+    build: .
+    container_name: apache_web
+    restart: always
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    links:
+      - db
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      #      MYSQL_DATABASE: banco
+      MYSQL_ROOT_PASSWORD: brasil
+    ports:
+      - 3306:3306
